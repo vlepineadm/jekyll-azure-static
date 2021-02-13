@@ -16,6 +16,14 @@ jobs:
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1.59.1
+        with:
+          ruby-version: 2.6
+      - name: Install dependencies
+        run: bundle install
+      - name: Jekyll build
+        run: jekyll build
         with:
           submodules: true
       - name: Build And Deploy
